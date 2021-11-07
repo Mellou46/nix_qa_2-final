@@ -1,4 +1,5 @@
 package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,26 +33,22 @@ public class MainPage extends BasePage {
         return isMainCheck.getText();
     }
 
-
     public MainPage womanPageRedirect() {
         womenHeader.click();
         return this;
     }
 
-    public String isWoman(){
+    public String isWoman() {
         return isWomanCheck.getText();
     }
-
 
     public MainPage dressesPageRedirect() {
         dressesHeader.click();
         return this;
     }
 
-
     public MainPage tshortsPageRedirect() {
         tshortsHeader.click();
         return this;
     }
-
 }

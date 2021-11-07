@@ -1,4 +1,5 @@
 package folder;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -162,8 +163,8 @@ public class WebDriverEventListenerImpl implements WebDriverEventListener {
 
     private void makeScreenshot(WebDriver driver) {
         File tmp = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String screenName = "screen_" + System.currentTimeMillis()+".png";
-        String screenPath =  screenshotDir + "/" + screenName;
+        String screenName = "screen_" + System.currentTimeMillis() + ".png";
+        String screenPath = screenshotDir + "/" + screenName;
         try {
             Files.copy(new FileInputStream(tmp), Path.of(screenPath));
         } catch (IOException exc) {

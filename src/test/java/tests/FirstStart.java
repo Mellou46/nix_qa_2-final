@@ -1,8 +1,8 @@
 package tests;
 
+import folder.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import folder.BaseTest;
 import pages.MainPage;
 
 public class FirstStart extends BaseTest {
@@ -20,7 +20,7 @@ public class FirstStart extends BaseTest {
     }
 
     @Test
-    public void openWomanPageFromMain(){
+    public void openWomanPageFromMain() {
         String actualMsg = new MainPage(driver)
                 .goToMain()
                 .womanPageRedirect()
@@ -28,5 +28,4 @@ public class FirstStart extends BaseTest {
                 .toUpperCase();
         Assert.assertEquals(actualMsg, mainPage.expTitleOfWomanPage);
     }
-
 }
