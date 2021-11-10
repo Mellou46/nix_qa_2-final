@@ -1,17 +1,16 @@
 package tests;
 
-import folder.BaseTest;
+import core.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-public class FirstStart extends BaseTest {
+public class MainPageTests extends BaseTest {
 
     MainPage mainPage = new MainPage(driver);
 
     @Test
     public void openMainPageTest() {
-
         String actualMsg = new MainPage(driver)
                 .goToMain()
                 .isMain()

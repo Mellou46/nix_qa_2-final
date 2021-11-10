@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--Конфигурация для testNG фреймворка-->
+<suite name="Base Suite">
+
+    <test name="Main Page Tests for chrome">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="tests.MainPageTests"/>
+            <class name="tests.LoginPageTests"/>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="core.TestListener"/>
+    </listeners>
+
+</suite>

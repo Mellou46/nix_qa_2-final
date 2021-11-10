@@ -1,4 +1,4 @@
-package folder;
+package core;
 
 import io.qameta.allure.Attachment;
 import org.apache.logging.log4j.LogManager;
@@ -38,21 +38,26 @@ public class BaseTest {
         String chromeDriver = properties.getProperty("driver.chrome");
         String screenDir = properties.getProperty("screen.dir");
 
-        if (browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", chromeDriver);
-            driver = new EventFiringWebDriver(new ChromeDriver());
+        switch (browser) {
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", chromeDriver);
+                driver = new EventFiringWebDriver(new ChromeDriver());
 
-        } else if (browser.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", geckoDriver);
-            driver = new EventFiringWebDriver(new FirefoxDriver());
+                break;
+            case "firefox":
+                System.setProperty("webdriver.gecko.driver", geckoDriver);
+                driver = new EventFiringWebDriver(new FirefoxDriver());
 
-        } else if (browser.equals("edge")) {
-            System.setProperty("webdriver.edge.driver", edgeDriver);
-            driver = new EventFiringWebDriver(new EdgeDriver());
-        } else if (browser.equals("safari")) {
-            driver = new EventFiringWebDriver(new SafariDriver());
-        } else {
-            throw new Exception("Unknown browser, please run tests in chrome, edge, firefox or safari");
+                break;
+            case "edge":
+                System.setProperty("webdriver.edge.driver", edgeDriver);
+                driver = new EventFiringWebDriver(new EdgeDriver());
+                break;
+            case "safari":
+                driver = new EventFiringWebDriver(new SafariDriver());
+                break;
+            default:
+                throw new Exception("Unknown browser, please run tests in chrome, edge, firefox or safari");
         }
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -61,7 +66,7 @@ public class BaseTest {
     }
 
     @AfterClass(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void tearDown(){
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
@@ -90,7 +95,9 @@ public class BaseTest {
         String path = System.getProperty("cfg");
         InputStream is;
         if (path == null) // иначе берем конфиги из рессурсов
-            is = this.getClass().getClassLoader().getResourceAsStream("demo.properties");
+            is = this.getClass()
+                    .getClassLoader()
+                    .getResourceAsStream("demo.properties");
         else
             is = new FileInputStream(path);
         properties = new Properties();

@@ -1,0 +1,4 @@
+user,123,Invalid email address.
+,123,An email address required.
+user@mail.com,123,Invalid password.
+,,Empty email field.

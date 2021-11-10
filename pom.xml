@@ -11,6 +11,8 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -94,4 +96,31 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <!--Плагин для управления запуском тестов-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <!--Путь к конфигурации testng.xml-->
+                    <systemProperties>
+                        <cfg>src/main/resources/demo.properties</cfg>
+                    </systemProperties>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>suits/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <argLine>-Dtestng.dtd.http=true -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar"</argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.9.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>
