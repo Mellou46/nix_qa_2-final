@@ -49,14 +49,6 @@ public class CartTests extends BaseTest {
         assertEquals(actualTotalPrice, expectedTotalPrice);
     }
 
-//    @Test
-//    public void fff(){
-//        cart.goToMain();
-//        WebElement hoverEl = driver.findElement(By.xpath("//ul[@id='homefeatured']/li[1]//div[@class='right-block']//div/span[@itemprop='price']"));
-//        WebElement hoverEl = driver.findElement(By.xpath("//ul[@id ='homefeatured']/li[1]"));
-//        action.moveToElement(hoverEl).click().build().perform();
-//    }
-
     @BeforeMethod
     public void clearCart() {
         cart.clearCookies();
