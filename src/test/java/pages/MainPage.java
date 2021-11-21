@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends BasePage {
@@ -26,6 +27,9 @@ public class MainPage extends BasePage {
     private WebElement addToCartOnMain;
     @FindBy(xpath = "//a[@title='Proceed to checkout']")
     private WebElement confirmAddToCartOnMain;
+    @FindBy(xpath = "//ul[@id='homefeatured']/li[1]/div[@class='product-container']")
+    private WebElement firstItemOnMain;
+    Actions action = new Actions(driver);
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -37,7 +41,7 @@ public class MainPage extends BasePage {
     }
 
     public MainPage selectFirstItem() {
-        itemsOnMain.click();
+        action.moveToElement(itemsOnMain).click().build().perform();
         return this;
     }
 
