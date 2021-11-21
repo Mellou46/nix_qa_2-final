@@ -1,6 +1,7 @@
 .idea
 *.iml
 *.class
+*.log
 target
 allure-results
 tmp

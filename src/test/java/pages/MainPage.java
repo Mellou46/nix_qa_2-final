@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends BasePage {
 
-    private MainPage mainPage;
     public String expTitleOfWomanPage = "WOMEN";
     public String expTitleOfMainPage = "POPULAR";
     @FindBy(xpath = "//div[@id='block_top_menu']/ul[1]/li[1]")
@@ -19,6 +18,14 @@ public class MainPage extends BasePage {
     private WebElement isWomanCheck;
     @FindBy(xpath = "//ul[@id='home-page-tabs']/li[1]/a")
     private WebElement isMainCheck;
+    @FindBy(xpath = "//a[@title='View my shopping cart']")
+    private WebElement cart;
+    @FindBy(xpath = "//ul[@id ='homefeatured']/li[1]")
+    private WebElement itemsOnMain;
+    @FindBy(xpath = "//ul[@id='homefeatured']/li[1]//a[@title='Add to cart']")
+    private WebElement addToCartOnMain;
+    @FindBy(xpath = "//a[@title='Proceed to checkout']")
+    private WebElement confirmAddToCartOnMain;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -26,6 +33,21 @@ public class MainPage extends BasePage {
 
     public MainPage goToMain() {
         driver.get("http://automationpractice.com/");
+        return this;
+    }
+
+    public MainPage selectFirstItem() {
+        itemsOnMain.click();
+        return this;
+    }
+
+    public MainPage addToCart() {
+        selectFirstItem().addToCartOnMain.click();
+        return this;
+    }
+
+    public MainPage confirmAddingToCart() {
+        confirmAddToCartOnMain.click();
         return this;
     }
 
@@ -49,6 +71,11 @@ public class MainPage extends BasePage {
 
     public MainPage tshortsPageRedirect() {
         tshortsHeader.click();
+        return this;
+    }
+
+    public MainPage cartRedirect() {
+        cart.click();
         return this;
     }
 }

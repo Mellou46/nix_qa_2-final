@@ -23,9 +23,9 @@ import static org.testng.Assert.fail;
 
 @Listeners(TestListener.class)
 public class BaseTest {
-    private static Logger LOG = LogManager.getLogger(BaseTest.class.getName());
-    protected EventFiringWebDriver driver;
+    private static final Logger LOG = LogManager.getLogger(BaseTest.class.getName());
     private final StringBuffer verificationErrors = new StringBuffer();
+    protected EventFiringWebDriver driver;
     protected Properties properties;
 
     @Parameters("browser")
@@ -66,7 +66,8 @@ public class BaseTest {
     }
 
     @AfterClass(alwaysRun = true)
-    public void tearDown(){
+    public void tearDown() {
+        LOG.info("Close Browser");
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
@@ -86,8 +87,8 @@ public class BaseTest {
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] makeScreenshot() {
-        return driver.getScreenshotAs(OutputType.BYTES);
+    public void makeScreenshot() {
+        driver.getScreenshotAs(OutputType.BYTES);
     }
 
     private void initProperties() throws IOException {

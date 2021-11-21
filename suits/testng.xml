@@ -5,10 +5,12 @@
 <suite name="Base Suite">
 
     <test name="Main Page Tests for chrome">
-        <parameter name="browser" value="chrome" />
+        <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="tests.MainPageTests"/>
-            <class name="tests.LoginPageTests"/>
+        <!--<class name="tests.MainPageTests"/>
+            <class name="tests.LoginPageTests"/> -->
+            <class name="tests.CartTests"/>
+
         </classes>
     </test>
     <listeners>
