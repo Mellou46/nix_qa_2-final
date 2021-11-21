@@ -3,7 +3,9 @@ package core;
 import io.qameta.allure.Attachment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -62,13 +64,15 @@ public class BaseTest {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.register(new WebDriverEventListenerImpl(screenDir));
-        driver.manage().window().maximize();
+        driver.manage().window().setPosition(new Point(0, 0));
+        Dimension d = new org.openqa.selenium.Dimension(1680, 1010);
+        driver.manage().window().setSize(d);
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         LOG.info("Close Browser");
-        driver.quit();
+        //driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
