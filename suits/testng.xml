@@ -21,6 +21,11 @@
             <class name="tests.CartTests"/>
         </classes>
     </test>
+    <test name="API">
+        <classes>
+            <class name="api.ApiTest"/>
+        </classes>
+    </test>
     <listeners>
         <listener class-name="core.TestListener"/>
     </listeners>
