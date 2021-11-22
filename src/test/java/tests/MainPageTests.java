@@ -15,6 +15,7 @@ public class MainPageTests extends BaseTest {
     public void pageCreation(){
         mainPage = new MainPage(driver);
     }
+
     @Test
     public void openMainPageTest() {
         String actualMsg = mainPage

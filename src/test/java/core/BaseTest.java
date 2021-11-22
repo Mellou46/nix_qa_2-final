@@ -72,7 +72,7 @@ public class BaseTest {
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         LOG.info("Close Browser");
-        //driver.quit();
+        driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
