@@ -38,7 +38,7 @@ public class LoginPage extends BasePage {
         submitButton.click();
         return this;
     }
-
+    @Step("Сравниваем полученный результат с ожидаемым")
     public String getErrorMessage() {
         return errorMessage.getText();
     }

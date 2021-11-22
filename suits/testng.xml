@@ -3,18 +3,26 @@
 
 <!--Конфигурация для testNG фреймворка-->
 <suite name="Base Suite">
-
     <test name="Main Page Tests for chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.MainPageTests"/>
+        </classes>
+    </test>
+    <test name="LogIn Page Tests for chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
             <class name="tests.LoginPageTests"/>
+        </classes>
+    </test>
+    <test name="Add Items To Cart Tests for chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
             <class name="tests.CartTests"/>
-
         </classes>
     </test>
     <listeners>
         <listener class-name="core.TestListener"/>
     </listeners>
-
 </suite>
+
