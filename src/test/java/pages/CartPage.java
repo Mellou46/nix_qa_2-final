@@ -58,7 +58,7 @@ public class CartPage extends MainPage {
         productCountField.click();
         productCountField.clear();
         productCountField.sendKeys("3");
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         return this;
     }
 
